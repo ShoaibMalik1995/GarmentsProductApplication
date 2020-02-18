@@ -1,0 +1,187 @@
+﻿@using EVS.Dotnet328.GarmentsShop.Models;
+
+@model IEnumerable<CityModel>
+
+@{
+    ViewBag.Title = "Manage";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+    AlertModel alertMessage = TempData["AlertMessage"] as AlertModel;
+}
+
+@if (alertMessage != null)
+{
+    @Html.Partial("~/Views/Shared/_AlertView.cshtml", alertMessage)
+}
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal-label">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModal-label"></h4>
+            </div>
+            <div class="modal-body" id="myModal-body">
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table table-bordered table-striped table-responsive">
+    <thead>
+        <tr class="bg-primary">
+            <th colspan="12">Manage Cities [ <a id="addnewlink" href="/city/create" data-action="create" data-id="0" style="color:#fff"> Add New </a> ]</th>
+        </tr>
+        <tr class="bg-primary">
+            <th colspan="12">
+                @Html.DropDownList("DDLCountry", (IEnumerable<SelectListItem>)ViewBag.Country, "- Select Country -", new { @class = "form-control" })
+            </th>
+        </tr>
+        <tr class="bg-primary">
+            <th colspan="12" id="ddl_province">
+
+            </th>
+        </tr>
+        <tr class="bg-primary">
+            <th class="col-lg-7">Name</th>
+            <th class="col-lg-5">Actions</th>
+        </tr>
+    </thead>
+    <tbody id="tablebody"></tbody>
+</table>
+
+@section myScript{
+    <script type="text/javascript">
+        $(function () {
+
+            $(".alert").fadeTo(15000, 1).fadeOut(1000);
+
+            $("#addnewlink").click(function (event) {
+                do_Something(this);
+                
+            });
+
+            $("#DDLCountry").change(function () {
+
+                var detail = "";
+
+                var cid = $("#DDLCountry").select("option:selected").val();
+                if (cid == 0) {
+                    $("#ddl_province").html("");
+                    $("#tablebody").html(detail);
+                }
+                else {
+                    $.ajax(
+                        {
+                            url: "/City/GetProvinceByCountry/" + cid
+                        }
+                    ).done(function (response) {
+                        $("#ddl_province").html("");
+                        $("#ddl_province").append(response);
+                        $("#ddl_province :first-child").remove();
+
+                        var pid = $("#DDLProvince").select("option:selected").val();
+                        $("#tablebody").html(detail);
+
+                        $.ajax(
+                            {
+                                url: "/City/GetCitiesByProvince/" + pid
+                            }
+                        ).done(function (resp) {
+                            $.each(resp, function (i, resp) {
+
+                                detail += '<tr><td class="col-lg-7">' + resp.Name + ' </td>';
+                                detail += '<td class="col-lg-5">';
+                                detail += '<button class="btn btn-xs btn-warning dgbtn-edit" data-action="edit" data-prodid="' + resp.Id + '"> <span class="glyphicon glyphicon-edit"></span></button>';
+                                detail += '&nbsp;<button class="btn btn-xs btn-danger dgbtn-delete" data-action="delete" data-prodid="' + resp.Id + '"> <span class="glyphicon glyphicon-trash"></span></button>';
+                                detail += '</td></tr>';
+                            });
+                            $("#tablebody").html(detail);
+
+                            $(".dgbtn-edit,.dgbtn-delete").click(function (event) {
+                                do_Something(this);
+
+                            });
+
+                            $("#DDLProvince").change(function () {
+                                var pid = $(this).select("option:selected").val();
+                                
+                                $.ajax(
+                                    {
+                                        url: "/City/GetCitiesByProvince/" + pid
+                                    }
+                                ).done(function (result) {
+                                    detail = "";
+                                    $("#tablebody").html(detail);
+                                    $.each(result, function (i, result) {
+                                        detail += '<tr><td class="col-lg-7">' + result.Name + ' </td>';
+                                        detail += '<td class="col-lg-5">';
+                                        detail += '<button class="btn btn-xs btn-warning dgbtn-edit" data-action="edit" data-prodid="' + result.Id + '"> <span class="glyphicon glyphicon-edit"></span></button>';
+                                        detail += '&nbsp;<button class="btn btn-xs btn-danger dgbtn-delete" data-action="delete" data-prodid="' + result.Id + '"> <span class="glyphicon glyphicon-trash"></span></button>';
+                                        detail += '</td></tr>';
+                                    });
+                                    $("#tablebody").html(detail);
+
+                                    $(".dgbtn-edit,.dgbtn-delete").click(function (event) {
+                                        do_Something(this);
+
+                                    });
+
+                                });
+
+                            });
+
+                        });
+
+                    });
+                }
+
+            });
+
+            function do_Something($obj) {
+
+                event.preventDefault();
+
+                var act = $($obj).data("action");
+                var url = "/City/Create";
+                var title = "Add New City";
+
+                if (act == "edit") {
+                    var pid = $($obj).data("prodid");
+                    url = "/City/Edit/" + pid;
+                    title = "Update City";
+                }
+                else {
+                    if (act == "delete") {
+                        var pid = $($obj).data("prodid");
+                        url = "/City/Delete/" + pid;
+                        title = "Delete City";
+                    }
+                }
+
+                $.ajax(
+                    {
+                        url: url
+                    }
+                ).done(function (result) {
+                    $("#myModal-label").text(title);
+                    $("#myModal-body").html(result);
+                    $("#myModal").modal();
+
+                    $("#Country").change(function () {
+                        var cid = $("#Country").select("option:selected").val();
+                        $.ajax(
+                            {
+                                url: "/City/GetProvinceByCountry/" + cid
+                            }
+                        ).done(function (result) {
+                            $("#province").html("");
+                            $("#province").append(result);
+
+                        });
+                    });
+                });
+
+            }
+        });
+    </script>
+}

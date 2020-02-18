@@ -1,0 +1,13 @@
+﻿@using EVS.Dotnet328.GarmentsShop.Models
+
+@{
+    ViewBag.Title = "Manage";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+    AlertModel alertMessage = TempData["AlertMessage"] as AlertModel;
+
+}
+
+@if (alertMessage != null)
+{
+    @Html.Partial("~/Views/Shared/_AlertView.cshtml", alertMessage)
+}

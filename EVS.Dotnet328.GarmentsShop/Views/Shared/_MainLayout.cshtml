@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    @RenderSection("mystyles", false)
+    <title>GarmentsShop - @ViewBag.Title</title>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar navbar-fixed-top bg-primary">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1">
+                        <span class="label-success sr-only">Toggle navigation</span>
+                        <span class="label-success icon-bar"></span>
+                        <span class="label-success icon-bar"></span>
+                        <span class="label-success icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand bg-primary" href="#"><span class="glyphicon glyphicon-leaf"></span> TheGarments</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/users/login" class="bg-primary"><span class="glyphicon glyphicon-log-in"> <b>Login</b></span></a></li>
+
+                        <li><a href="/users/signup" class="bg-primary"><span class="glyphicon glyphicon-user"></span> <b>SignUp</b></a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+    </header>
+    <section class="modal fade" id="mydialog" tabindex="-1" role="dialog" aria-labelledby="mydialog-label">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="mydialog-label"><span class="glyphicon glyphicon-user"></span> @ViewBag.Title</h4>
+                </div>
+                <div class="modal-body">
+                    @RenderBody()
+                </div>
+                <div class="modal-footer">
+                    @RenderSection("modalfooter")
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="my-carousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#my-carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#my-carousel" data-slide-to="1"></li>
+            <li data-target="#my-carousel" data-slide-to="2"></li>
+            <li data-target="#my-carousel" data-slide-to="3"></li>
+            <li data-target="#my-carousel" data-slide-to="4"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img alt="First slide" src="~/Images/banners/banner1.jpg" />
+                <div class="carousel-caption">
+                    <h3>Image 1</h3>
+                    <p>New collection</p>
+                </div>
+            </div>
+            <div class="item">
+                <img alt="Second slide" src="~/Images/banners/banner2.jpg" />
+                <div class="carousel-caption">
+                    <h3>Image 2</h3>
+                    <p>New Collection</p>
+                </div>
+            </div>
+            <div class="item">
+                <img alt="Third slide" src="~/Images/banners/banner3.jpg" />
+                <div class="carousel-caption">
+                    <h3>Image 3</h3>
+                    <p>New Collection</p>
+                </div>
+            </div>
+            <div class="item">
+                <img alt="Third slide" src="~/Images/banners/banner4.jpg" />
+                <div class="carousel-caption">
+                    <h3>Image 4</h3>
+                    <p>New Collection</p>
+                </div>
+            </div>
+            <div class="item">
+                <img alt="Third slide" src="~/Images/banners/banner5.jpg" />
+                <div class="carousel-caption">
+                    <h3>Image 5</h3>
+                    <p>New Collection</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#my-carousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#my-carousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+    <div class="modal-footer bg-success" style="text-align:center">
+        © 2018 Copyright:<a href="https://www.khaadi.com"> Khaadi.com</a>
+    </div>
+
+    <!-- JavaScript Code-->
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/evs_script.js"></script>
+    @RenderSection("myscript", false)
+    <script type="text/javascript">
+        $(function () {
+
+            $("#mydialog").modal();
+
+            $(".form-control").blur(function () {
+                if ($(this).val().length == 0) {
+                    $(this).parent().addClass("has-error");
+                    $(this).parent().removeClass("has-success");
+                    $(this).next().html("<span class='glyphicon glyphicon-warning-sign'></span>")
+                }
+                else {
+                    $(this).parent().addClass("has-success");
+                    $(this).parent().removeClass("has-error");
+                    $(this).next().html("<span class='glyphicon glyphicon-check'></span>")
+                }
+            });
+
+            $("#Country").change(function () {
+                //alert("aaa");
+                //debugger;
+                var cid = $(this).select("option:selected").val();
+                $.ajax(
+                    {
+                        url: "/City/GetProvinceByCountry/" + cid
+                    }
+                ).done(function (resp) {
+
+                    $("#provinces").html(resp);
+                    $("#provinces span:first-child").addClass("label-info");
+                    $("#provinces span:first-child").css("background-color", "aliceblue");
+
+                    $("#DDLProvince").change(function () {
+                        var pid = $(this).select("option:selected").val();
+
+                        $.ajax(
+                            {
+                                url: "/City/CityByProvince/" + pid
+                            }
+                        ).done(function (result) {
+                            $("#Citys").html(result);
+                            $("#Citys span:first-child").addClass("label-info");
+                            $("#Citys span:first-child").css("background-color", "aliceblue");
+                        });
+                    });
+
+                });
+
+            });
+
+        });
+    </script>
+
+</body>
+</html>

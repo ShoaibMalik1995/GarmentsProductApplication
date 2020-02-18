@@ -1,0 +1,43 @@
+D:\Classes\01Dotnet\Dotnet328\Part02\2018-05-10(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\bin\Debug\EVS.Dotnet328.GarmentsShop.ConsoleTesting.exe.config
+D:\Classes\01Dotnet\Dotnet328\Part02\2018-05-10(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\bin\Debug\EVS.Dotnet328.GarmentsShop.ConsoleTesting.exe
+D:\Classes\01Dotnet\Dotnet328\Part02\2018-05-10(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\bin\Debug\EVS.Dotnet328.GarmentsShop.ConsoleTesting.pdb
+D:\Classes\01Dotnet\Dotnet328\Part02\2018-05-10(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\bin\Debug\EntityFramework.dll
+D:\Classes\01Dotnet\Dotnet328\Part02\2018-05-10(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\bin\Debug\EntityFramework.SqlServer.dll
+D:\Classes\01Dotnet\Dotnet328\Part02\2018-05-10(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\bin\Debug\EVS.Dotnet328.dll
+D:\Classes\01Dotnet\Dotnet328\Part02\2018-05-10(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\bin\Debug\EVS.Dotnet328.pdb
+D:\Classes\01Dotnet\Dotnet328\Part02\2018-05-10(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\bin\Debug\EVS.Dotnet328.dll.config
+D:\Classes\01Dotnet\Dotnet328\Part02\2018-05-10(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\bin\Debug\EntityFramework.xml
+D:\Classes\01Dotnet\Dotnet328\Part02\2018-05-10(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\bin\Debug\EntityFramework.SqlServer.xml
+D:\Classes\01Dotnet\Dotnet328\Part02\2018-05-10(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\obj\Debug\EVS.Dotnet328.GarmentsShop.ConsoleTesting.csprojResolveAssemblyReference.cache
+D:\Classes\01Dotnet\Dotnet328\Part02\2018-05-10(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\obj\Debug\EVS.Dotnet328.GarmentsShop.ConsoleTesting.csproj.CoreCompileInputs.cache
+D:\Classes\01Dotnet\Dotnet328\Part02\2018-05-10(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\obj\Debug\EVS.Dotnet328.GarmentsShop.ConsoleTesting.csproj.CopyComplete
+D:\Classes\01Dotnet\Dotnet328\Part02\2018-05-10(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\obj\Debug\EVS.Dotnet328.GarmentsShop.ConsoleTesting.exe
+D:\Classes\01Dotnet\Dotnet328\Part02\2018-05-10(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\obj\Debug\EVS.Dotnet328.GarmentsShop.ConsoleTesting.pdb
+C:\Users\User\Downloads\Evs\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\bin\Debug\EVS.Dotnet328.GarmentsShop.ConsoleTesting.exe.config
+C:\Users\User\Downloads\Evs\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\bin\Debug\EVS.Dotnet328.GarmentsShop.ConsoleTesting.exe
+C:\Users\User\Downloads\Evs\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\bin\Debug\EVS.Dotnet328.GarmentsShop.ConsoleTesting.pdb
+C:\Users\User\Downloads\Evs\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\bin\Debug\EntityFramework.dll
+C:\Users\User\Downloads\Evs\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\User\Downloads\Evs\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\bin\Debug\EVS.Dotnet328.dll
+C:\Users\User\Downloads\Evs\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\bin\Debug\EVS.Dotnet328.pdb
+C:\Users\User\Downloads\Evs\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\bin\Debug\EVS.Dotnet328.dll.config
+C:\Users\User\Downloads\Evs\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\bin\Debug\EntityFramework.xml
+C:\Users\User\Downloads\Evs\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\User\Downloads\Evs\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\obj\Debug\EVS.Dotnet328.GarmentsShop.ConsoleTesting.csprojResolveAssemblyReference.cache
+C:\Users\User\Downloads\Evs\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\obj\Debug\EVS.Dotnet328.GarmentsShop.ConsoleTesting.csproj.CoreCompileInputs.cache
+C:\Users\User\Downloads\Evs\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\obj\Debug\EVS.Dotnet328.GarmentsShop.ConsoleTesting.exe
+C:\Users\User\Downloads\Evs\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\obj\Debug\EVS.Dotnet328.GarmentsShop.ConsoleTesting.pdb
+C:\Users\User\Desktop\Working Application\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\bin\Debug\EVS.Dotnet328.GarmentsShop.ConsoleTesting.exe.config
+C:\Users\User\Desktop\Working Application\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\bin\Debug\EVS.Dotnet328.GarmentsShop.ConsoleTesting.exe
+C:\Users\User\Desktop\Working Application\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\bin\Debug\EVS.Dotnet328.GarmentsShop.ConsoleTesting.pdb
+C:\Users\User\Desktop\Working Application\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\bin\Debug\EntityFramework.dll
+C:\Users\User\Desktop\Working Application\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\User\Desktop\Working Application\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\bin\Debug\EVS.Dotnet328.dll
+C:\Users\User\Desktop\Working Application\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\bin\Debug\EVS.Dotnet328.pdb
+C:\Users\User\Desktop\Working Application\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\bin\Debug\EVS.Dotnet328.dll.config
+C:\Users\User\Desktop\Working Application\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\bin\Debug\EntityFramework.xml
+C:\Users\User\Desktop\Working Application\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\User\Desktop\Working Application\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\obj\Debug\EVS.Dotnet328.GarmentsShop.ConsoleTesting.csprojResolveAssemblyReference.cache
+C:\Users\User\Desktop\Working Application\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\obj\Debug\EVS.Dotnet328.GarmentsShop.ConsoleTesting.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\Working Application\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\obj\Debug\EVS.Dotnet328.GarmentsShop.ConsoleTesting.exe
+C:\Users\User\Desktop\Working Application\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328.GarmentsShop.ConsoleTesting\obj\Debug\EVS.Dotnet328.GarmentsShop.ConsoleTesting.pdb

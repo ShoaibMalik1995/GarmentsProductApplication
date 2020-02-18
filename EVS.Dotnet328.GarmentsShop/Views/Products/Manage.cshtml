@@ -1,0 +1,144 @@
+﻿@using EVS.Dotnet328.GarmentsShop.Models
+@model IEnumerable<SummaryModel>
+
+@{
+    ViewBag.Title = "Manage Products";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+    AlertModel alertMessage = TempData["AlertMessage"] as AlertModel;
+
+}
+
+@if (alertMessage != null)
+{
+    @Html.Partial("~/Views/Shared/_AlertView.cshtml", alertMessage)
+}
+
+<div class="modal fade" id="mydialog" tabindex="-1" role="dialog" aria-labelledby="mydialog-label">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="mydialog-title"></h4>
+            </div>
+            <div class="modal-body" id="mydialog-body">
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table table-bordered table-hover table-responsive">
+    <thead>
+        <tr class="bg-primary">
+            <th colspan="5">Manage Products [<a id="addnewlink" href="/products/create" style="color:#fff;">  Add New  </a>]</th>
+        </tr>
+        <tr class="bg-primary">
+            <th class="col-lg-1">Image</th>
+            <th class="col-lg-4">Title</th>
+            <th class="col-lg-2">Price</th>
+            <th class="col-lg-5">Actions</th>
+        </tr>
+    </thead>
+    <tbody id="tablebody">
+        @foreach (var m in Model)
+        {
+            <tr>
+
+                <td class="col-lg-1">
+                    @if (!string.IsNullOrEmpty(m.MainImageUrl))
+                    {
+                        <img src="@Url.Content(m.AlternateImageUrl)" alt="@m.Name" class="dg-icon" data-prodid="@m.Id" />
+                    }
+                </td>
+                <td class="col-lg-4">@m.Name</td>
+                <td class="col-lg-2">@m.Price</td>
+                <td class="col-lg-5">
+                    <button class="btn btn-xs btn-success dgbtn-details" data-prodid="@m.Id" data-action="Detail"> <span class="glyphicon glyphicon-search"></span></button>
+                    <button class="btn btn-xs btn-warning dgbtn-edit" data-prodid="@m.Id" data-action="Edit"> <span class="glyphicon glyphicon-edit"></span></button>
+                    <button class="btn btn-xs btn-danger dgbtn-delete" data-prodid="@m.Id" data-action="Delete"> <span class="glyphicon glyphicon-trash"></span></button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@section myscript{
+    <script src="~/Scripts/moment.js"></script>
+    <script type="text/javascript">
+        $(function () {
+
+            $(".alert").fadeTo(15000, 1).fadeOut(1000);
+
+            $("#addnewlink").click(function (event) {
+                event.preventDefault();
+                $.ajax(
+                    {
+                        url: "/products/create"
+                    }
+                ).done(function (createform) {
+                    debugger;
+                    $("#mydialog-title").text("Add New Products");
+                    $("#mydialog-body").html(createform);
+                    $("#mydialog").modal();
+                    $("#Department").change(function () {
+                        var deptid = $(this).select("option:selected").val();
+                        $.ajax(
+                            {
+                                url: "/categories/level2/" + deptid
+                            }
+                        ).done(function (categoriesddl) {
+                            $("#categorydiv").html(categoriesddl);
+                            $("#Category").change(function () {
+                                var catid = $(this).select("option:selected").val();
+                                $.ajax(
+                                    {
+                                        url: "/categories/level3/" + catid
+                                    }
+                                ).done(function (subcatddl) {
+                                    $("#subcategorydiv").html(subcatddl);
+                                });
+                            });
+                        });
+                    });
+                });
+            });
+
+            $(".dgbtn-details,.dgbtn-edit,.dgbtn-delete").click(function (event) {
+                event.preventDefault();
+                var pid = $(this).data("prodid");
+                var act = $(this).data("action");
+                var title, url;
+
+                switch (act) {
+                    case "Edit":
+                        title = "Edit Product Details"
+                        url = "/products/edit/" + pid;
+                        break;
+                    case "Delete":
+                        title = "Delete Product";
+                        url = "/products/delete/" + pid;
+                        break;
+                    default:
+                        title = "Product Details";
+                        url = "/products/detail/" + pid;
+                        break;
+                }
+
+                $.ajax(
+                    {
+                        url: url
+                    }
+                ).done(function (result) {
+                    debugger;
+                    $("#mydialog-title").text(title);
+                    $("#mydialog-body").html(result);
+                    $("#mydialog").modal();
+
+                });
+
+            });
+
+        });
+    </script>
+}
+

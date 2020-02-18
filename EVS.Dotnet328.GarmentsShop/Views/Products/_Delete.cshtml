@@ -1,0 +1,24 @@
+﻿@using EVS.Dotnet328.GarmentsShop.Models
+@model  SummaryModel
+
+@using (Html.BeginForm("Delete", "Products", FormMethod.Post, new { id = "deleteproductform" }))
+{
+    @Html.Hidden("ProductId", Model.Id)
+    <div class="form-group">
+        <img src="@Url.Content(Model.MainImageUrl)" alt="@Model.Name" />
+        <img src="@Url.Content(Model.AlternateImageUrl)" alt="@Model.Name" />
+    </div>
+
+    <div class="form-group" style="text-align:center !important ">
+        <button type="button" class="btn btn-info">Name : <span class="badge badge-light">@Model.Name</span></button>
+        &nbsp;
+        <button type="button" class="btn btn-info">Price :<span class="badge badge-light"> @Model.Price</span></button>
+        &nbsp;
+        <button type="button" class="btn btn-info">Add To Cart <span class=" badge badge-light"><span class="glyphicon glyphicon-shopping-cart"></span></span></button>
+    </div>
+
+    <div class="form-group modal-footer">
+        <button type="submit" class="btn btn-success"> <span class="glyphicon glyphicon-floppy-disk"></span>Delete</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle"></span>Cancle</button>
+    </div>
+}

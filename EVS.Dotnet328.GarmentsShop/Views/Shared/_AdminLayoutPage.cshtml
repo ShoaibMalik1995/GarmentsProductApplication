@@ -1,0 +1,97 @@
+﻿@using EVS.Dotnet328.UsersMgt
+
+@{
+    User CurrentUser = Session[WebUtil.CURRENT_USER] as User;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" lang="en-us" />
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/main.css" rel="stylesheet" />
+    <link href="~/Content/LeftMenu.css" rel="stylesheet" />
+
+    @RenderSection("mystyles", false)
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar navbar-fixed-top bg-primary">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainmenu">
+                        <span class="label-success sr-only">Toggle navigation</span>
+                        <span class="label-success icon-bar"></span>
+                        <span class="label-success icon-bar"></span>
+                        <span class="label-success icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-leaf"></span> TheGarments</a>
+                </div>
+                <div class="collapse navbar-collapse" id="mainmenu">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" style="background-color:#5cb85c; color:white" data-toggle="dropdown">
+                                <strong>@CurrentUser.Name <span class="glyphicon glyphicon-user"></span></strong>
+                            </a>
+                            <ul class="dropdown-menu">
+                                @if (!string.IsNullOrWhiteSpace(CurrentUser.ImageUrl))
+                                {
+                                    <li style="padding:15px;text-align:center">
+                                        <img src=@CurrentUser.ImageUrl alt=@CurrentUser.LoginId style="width:100px;height:100px" />
+                                    </li>
+
+                                }
+                                else
+                                {
+                                    <li style="padding:15px;text-align:center">
+                                        <img src="~/Images/others/user.png" style="width:100px;height:100px" />
+                                    </li>
+                                }
+                                <li class="divider"></li>
+                                <li><a href="/UserManagement/UserProfile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+                                <li><a href="/UserManagement/ChangePassword"><span class="glyphicon glyphicon-asterisk"></span> Change Password</a></li>
+                                <li class="divider"></li>
+                                <li><a href="/Users/login"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+    </header>
+
+    @*leftMenu with content section*@
+    <div class="wrapper">
+        <div class="row row-offcanvas row-offcanvas-left ">
+            <!-- sidebar -->
+            @Html.Partial("_SideMenu")
+            <!-- /sidebar -->
+            <!-- main right col (Main Content)-->
+            <div class="column col-xs-10" id="main">
+                @RenderBody()
+            </div>
+            <!-- /main -->
+        </div>
+    </div>
+    @*END Left Menu*@
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    @*left Menu Script*@
+    <script type="text/javascript">
+        $(function () {
+
+            $('[data-toggle=offcanvas]').click(function () {
+                $('.row-offcanvas').toggleClass('active');
+                $('.collapse').toggleClass('in').toggleClass('hidden-xs').toggleClass('visible-xs');
+            });
+        });
+    </script>
+    @*left Menu Script*@
+
+    @RenderSection("myscript", false)
+</body>
+</html>

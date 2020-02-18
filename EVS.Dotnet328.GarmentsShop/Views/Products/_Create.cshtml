@@ -1,0 +1,74 @@
+﻿
+@using (Html.BeginForm("Create", "Products", FormMethod.Post, new { id = "createproductform", enctype = "multipart/form-data" }))
+{
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#generalpane" data-toggle="tab">General</a></li>
+        <li><a href="#descriptionpane" data-toggle="tab">Description</a></li>
+        <li><a href="#imagespane" data-toggle="tab">Images</a></li>
+    </ul>
+    <div class="tab-content">
+        <div id="generalpane" class="tab-pane mytab-pane active">
+            <div class="form-group form-inline" style="margin-top: 1% !important">
+                <div class="input-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-tags"></span></span>
+                    @Html.DropDownList("Department", (IEnumerable<SelectListItem>)ViewBag.Departments, "- Select Department -", new { @class = "form-control" })
+                </div>
+                <div id="categorydiv" class="input-group">
+                </div>
+                <div id="subcategorydiv" class="input-group">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-edit"></span></span>
+                    @Html.TextBox("Name", null, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group col-lg-3">
+                    <span class="input-group-addon"><strong>Rs.</strong></span>
+                    @Html.TextBox("Price", null, new { @class = "form-control", type = "number", Min = "0" })
+                </div>
+            </div>
+            <div class="form-group form-inline">
+                <div class="input-group col-lg-4">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    @Html.TextBox("LaunchingDate", null, new { @class = "form-control", type = "date"})
+                </div>
+            </div>
+            <div class="form-group form-inline">
+                <div class="input-group">
+                    <label style="padding-right:10px;">Sizes Offered: </label>
+                    @Html.ListBox("SizesOffered", (IEnumerable<SelectListItem>)ViewBag.Sizes, new { @class = "form-control", size = 6 })
+                </div>
+                <div class="input-group">
+                    <label style="padding-right:10px;">Colors Offered: </label>
+                    @Html.ListBox("ColorsOffered", (IEnumerable<SelectListItem>)ViewBag.Colors, new { @class = "form-control", size = 6 })
+                </div>
+            </div>
+            <div class="form-group form-inline">
+                <div>
+                    <label style="padding-right:10px;">Fabrics: </label>
+                </div>
+                @foreach (var item in (List<SelectListItem>)ViewBag.Fabrics)
+                {
+                    <label style="font-weight:normal;padding-right:10px;"> @Html.RadioButton("Fabric", item.Value, item.Selected) @item.Text</label>
+                }
+            </div>
+        </div>
+        <div id="descriptionpane" class="tab-pane mytab-pane">
+            @Html.TextArea("Description", new { @class = "form-control", rows = 20, placeholder = "Advertisement Details" })
+        </div>
+        <div id="imagespane" class="tab-pane mytab-pane">
+            <input id="file1" name="photo1" type="file" />
+            <input id="file1" name="photo2" type="file" />
+            <input id="file1" name="photo3" type="file" />
+            <input id="file1" name="photo4" type="file" />
+        </div>
+    </div>
+
+    <div class="form-group modal-footer">
+        <button type="submit" class="btn btn-success"> <span class="glyphicon glyphicon-floppy-disk"></span> Save</button>
+        <button type="reset" class="btn btn-danger" data-dismiss="modal"> <span class="glyphicon glyphicon-remove"></span> Cancel</button>
+    </div>
+}

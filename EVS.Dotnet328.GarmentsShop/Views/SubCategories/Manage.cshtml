@@ -1,0 +1,173 @@
+﻿@using EVS.Dotnet328.GarmentsShop.Models
+@using EVS.Dotnet328.GarmentsShop.Models.Categories
+
+@model IEnumerable<SubCategoryModel>
+
+@{
+    ViewBag.Title = "Manage";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+    AlertModel alertMessage = TempData["AlertMessage"] as AlertModel;
+}
+
+
+@if (alertMessage != null)
+{
+    @Html.Partial("~/Views/Shared/_AlertView.cshtml", alertMessage);
+}
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal-label">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModal-label"></h4>
+            </div>
+            <div class="modal-body" id="myModal-body">
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table table-bordered table-hover table-responsive">
+    <thead>
+        <tr class="bg-primary">
+            <th colspan="5">Manage SubCategories [<a id="addnewlink" data-action="create" data-id="0" style="color:#fff;">  Add New  </a>]</th>
+        </tr>
+        <tr class="bg-primary">
+            <th colspan="12">
+                @Html.DropDownList("Deparment", (IEnumerable<SelectListItem>)ViewBag.Department, "- Select Department -", new { @class = "form-control" })
+            </th>
+        </tr>
+        <tr>
+            <th colspan="12" id="ddlcategory">
+
+            </th>
+        </tr>
+        <tr class="bg-primary">
+            <th class="col-lg-7">Title</th>
+            <th class="col-lg-5">Actions</th>
+        </tr>
+    </thead>
+    <tbody id="tablebody">
+        @*@foreach (var m in Model)
+        {
+            <tr>
+                <td class="col-lg-7">@m.Name</td>
+                <td class="col-lg-5">
+                    <button class="btn btn-xs btn-warning dgbtn-edit" data-action="Edit" data-id="@m.Id"> <span class="glyphicon glyphicon-edit"></span></button>
+                    <button class="btn btn-xs btn-danger dgbtn-delete" data-action="Delete" data-id="@m.Id"> <span class="glyphicon glyphicon-trash"></span></button>
+                </td>
+            </tr>
+        }*@
+    </tbody>
+</table>
+
+@section myScript{
+    <script type="text/javascript">
+        $(function () {
+
+            $(".alert").fadeTo(15000, 1).fadeOut(1000);
+
+            $("#Deparment").change(function () {
+                var deptid = $(this).select("option:selected").val();
+                if (deptid == "") {
+                    deptid = 0;
+                }
+
+                $.ajax(
+                    {
+                        url: "/categories/Level2/" + deptid
+                    }
+                ).done(function (resp) {
+                    $("#ddlcategory").html(resp);
+                    $("#ddlcategory span:first-child").remove();
+
+                    $("#Category").change(function () {
+                        var catid = $(this).select("option:selected").val();
+                        var detail = "";
+                        if (catid == "") {
+                            catid = 0;
+                        }
+
+                        $.ajax(
+                            {
+                                url: "/subcategories/level3/" + catid
+                            }
+                        ).done(function (result) {
+                            $("#tablebody").html(detail);
+
+                            $.each(result, function (i, result) {
+                                //alert("done");
+                                detail += '<tr><td class="col-lg-7">' + result.Name + ' </td>';
+                                detail += '<td class="col-lg-5">';
+                                detail += '<button class="btn btn-xs btn-warning dgbtn-edit" data-action="Edit" data-id="' + result.Id + '"> <span class="glyphicon glyphicon-edit"></span></button>';
+                                detail += '&nbsp;<button class="btn btn-xs btn-danger dgbtn-delete" data-action="Delete" data-id="' + result.Id + '"> <span class="glyphicon glyphicon-trash"></span></button>';
+                                detail += '</td></tr>';
+                            });
+                            $("#tablebody").html(detail);
+
+                            $(".dgbtn-edit,.dgbtn-delete").click(function (event) {
+                                event.preventDefault;
+                                do_Something(this);
+                            });
+
+                        });
+                    })
+                });
+            });
+
+            $("#addnewlink,.dgbtn-edit,.dgbtn-delete").click(function (event) {
+                event.preventDefault;
+                do_Something(this);
+            });
+
+            function do_Something($obj) {
+
+                var id = $($obj).data("id");
+                var act = $($obj).data("action");
+                var title, url;
+                //debugger;
+                switch (act) {
+                    case "Edit":
+                        title = "Edit Sub Category";
+                        url = "/subcategories/edit/" + id;
+                        break;
+                    case "Delete":
+                        title = "Delete Sub Category";
+                        url = "/subcategories/delete/" + id;
+                        break;
+                    default:
+                        title = "Add New Sub Category";
+                        url = "/subcategories/create"
+                        break;
+                }
+
+                $.ajax(
+                    {
+                        url: url
+                    }
+                ).done(function (response) {
+                    $("#myModal-label").text(title);
+                    $("#myModal-body").html(response);
+                    $("#myModal").modal();
+
+                    $("#Department").change(function () {
+                        var deptid = $(this).select("option:selected").val();
+                        if (deptid == "") {
+                            deptid = 0;
+                        }
+
+                        $.ajax(
+                            {
+                                url: "/categories/level2/" + deptid
+                            }
+                        ).done(function (resp) {
+                            $("#ddl_category").html(resp);
+
+                        });
+                    });
+                });
+            }
+        });
+    </script>
+}

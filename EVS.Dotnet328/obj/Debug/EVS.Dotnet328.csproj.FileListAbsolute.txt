@@ -1,0 +1,48 @@
+D:\Classes\01Dotnet\Dotnet328\Part02\2018-05-10(328)\ASP .NET MVC Demo\EVS.Dotnet328\bin\Debug\EVS.Dotnet328.dll.config
+D:\Classes\01Dotnet\Dotnet328\Part02\2018-05-10(328)\ASP .NET MVC Demo\EVS.Dotnet328\bin\Debug\EVS.Dotnet328.dll
+D:\Classes\01Dotnet\Dotnet328\Part02\2018-05-10(328)\ASP .NET MVC Demo\EVS.Dotnet328\bin\Debug\EVS.Dotnet328.pdb
+D:\Classes\01Dotnet\Dotnet328\Part02\2018-05-10(328)\ASP .NET MVC Demo\EVS.Dotnet328\bin\Debug\EntityFramework.dll
+D:\Classes\01Dotnet\Dotnet328\Part02\2018-05-10(328)\ASP .NET MVC Demo\EVS.Dotnet328\bin\Debug\EntityFramework.SqlServer.dll
+D:\Classes\01Dotnet\Dotnet328\Part02\2018-05-10(328)\ASP .NET MVC Demo\EVS.Dotnet328\bin\Debug\EntityFramework.xml
+D:\Classes\01Dotnet\Dotnet328\Part02\2018-05-10(328)\ASP .NET MVC Demo\EVS.Dotnet328\bin\Debug\EntityFramework.SqlServer.xml
+D:\Classes\01Dotnet\Dotnet328\Part02\2018-05-10(328)\ASP .NET MVC Demo\EVS.Dotnet328\obj\Debug\EVS.Dotnet328.csprojResolveAssemblyReference.cache
+D:\Classes\01Dotnet\Dotnet328\Part02\2018-05-10(328)\ASP .NET MVC Demo\EVS.Dotnet328\obj\Debug\EVS.Dotnet328.csproj.CoreCompileInputs.cache
+D:\Classes\01Dotnet\Dotnet328\Part02\2018-05-10(328)\ASP .NET MVC Demo\EVS.Dotnet328\obj\Debug\EVS.Dotnet328.csproj.CopyComplete
+D:\Classes\01Dotnet\Dotnet328\Part02\2018-05-10(328)\ASP .NET MVC Demo\EVS.Dotnet328\obj\Debug\EVS.Dotnet328.dll
+D:\Classes\01Dotnet\Dotnet328\Part02\2018-05-10(328)\ASP .NET MVC Demo\EVS.Dotnet328\obj\Debug\EVS.Dotnet328.pdb
+C:\Users\User\Downloads\Evs\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328\bin\Debug\EVS.Dotnet328.dll.config
+C:\Users\User\Downloads\Evs\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328\bin\Debug\EVS.Dotnet328.dll
+C:\Users\User\Downloads\Evs\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328\bin\Debug\EVS.Dotnet328.pdb
+C:\Users\User\Downloads\Evs\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328\bin\Debug\EntityFramework.dll
+C:\Users\User\Downloads\Evs\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\User\Downloads\Evs\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328\bin\Debug\EntityFramework.xml
+C:\Users\User\Downloads\Evs\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\User\Downloads\Evs\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328\obj\Debug\EVS.Dotnet328.csprojResolveAssemblyReference.cache
+C:\Users\User\Downloads\Evs\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328\obj\Debug\EVS.Dotnet328.csproj.CoreCompileInputs.cache
+C:\Users\User\Downloads\Evs\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328\obj\Debug\EVS.Dotnet328.dll
+C:\Users\User\Downloads\Evs\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328\obj\Debug\EVS.Dotnet328.pdb
+C:\Users\User\Desktop\Working Application\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328\bin\Debug\EVS.Dotnet328.dll.config
+C:\Users\User\Desktop\Working Application\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328\bin\Debug\EVS.Dotnet328.dll
+C:\Users\User\Desktop\Working Application\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328\bin\Debug\EVS.Dotnet328.pdb
+C:\Users\User\Desktop\Working Application\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328\bin\Debug\EntityFramework.dll
+C:\Users\User\Desktop\Working Application\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\User\Desktop\Working Application\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328\bin\Debug\EntityFramework.xml
+C:\Users\User\Desktop\Working Application\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\User\Desktop\Working Application\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328\obj\Debug\EVS.Dotnet328.dll
+C:\Users\User\Desktop\Working Application\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328\obj\Debug\EVS.Dotnet328.pdb
+C:\Users\User\Desktop\Working Application\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328\obj\Debug\EVS.Dotnet328.csprojResolveAssemblyReference.cache
+C:\Users\User\Desktop\Working Application\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328\bin\Debug\FoolproofValidation.dll
+C:\Users\User\Desktop\Working Application\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\User\Desktop\Working Application\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328\bin\Debug\System.Web.Helpers.dll
+C:\Users\User\Desktop\Working Application\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328\bin\Debug\System.Web.Mvc.dll
+C:\Users\User\Desktop\Working Application\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328\bin\Debug\System.Web.Razor.dll
+C:\Users\User\Desktop\Working Application\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\User\Desktop\Working Application\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328\bin\Debug\System.Web.WebPages.dll
+C:\Users\User\Desktop\Working Application\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\User\Desktop\Working Application\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328\bin\Debug\System.Web.Helpers.xml
+C:\Users\User\Desktop\Working Application\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328\bin\Debug\System.Web.Mvc.xml
+C:\Users\User\Desktop\Working Application\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328\bin\Debug\System.Web.Razor.xml
+C:\Users\User\Desktop\Working Application\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328\bin\Debug\System.Web.WebPages.xml
+C:\Users\User\Desktop\Working Application\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\User\Desktop\Working Application\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\User\Desktop\Working Application\2018-05-16(328)\2018-05-16(328)\ASP .NET MVC Demo\EVS.Dotnet328\obj\Debug\EVS.Dotnet328.csproj.CoreCompileInputs.cache

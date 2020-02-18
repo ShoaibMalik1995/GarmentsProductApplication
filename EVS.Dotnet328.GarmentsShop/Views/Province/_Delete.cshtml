@@ -1,0 +1,27 @@
+﻿@using EVS.Dotnet328.GarmentsShop.Models
+
+@model ProvinceModal
+
+@using (Html.BeginForm("Edit", "Province", FormMethod.Post, new { id = "editProvinceform" }))
+{
+    <div class="form-group">
+        <div class="input-group has-feedback">
+            <span class="input-group-addon"><span>Countries</span></span>
+            @Html.DropDownListFor(m => m.Country_Id, (IEnumerable<SelectListItem>)ViewBag.Country, "- Select Country -", new { @class = "form-control", disabled="true" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="input-group has-feedback">
+            <span class="input-group-addon"><span>Province</span></span>
+            @Html.TextBoxFor(m => m.Name, new { placeholder = "Province Name", type = "text", @class = "form-control", disabled = "true" })
+        </div>
+    </div>
+
+    <div class="form-group modal-footer">
+        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-floppy-saved"></span> Save</button>
+        <button type="reset" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle"></span> Cancle</button>
+    </div>
+}
+
+

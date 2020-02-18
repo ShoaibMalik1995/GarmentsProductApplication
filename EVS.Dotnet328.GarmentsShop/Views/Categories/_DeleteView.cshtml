@@ -1,0 +1,24 @@
+﻿@using EVS.Dotnet328.GarmentsShop.Models.Categories
+@model CategoryModel
+
+@using (Html.BeginForm("delete", "categories", FormMethod.Post, new { id = "deletecategoryform" }))
+{
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-tags"></span></span>
+            @Html.DropDownListFor(m => m.DepartmentId, (IEnumerable<SelectListItem>)ViewBag.Departments, "- Select Department -", new { @class = "form-control", disabled = "true" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="input-group has-feedback">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-bookmark"></span></span>
+            @Html.TextBoxFor(m => m.Name, new { placeholder = "Category Name", @class = "form-control", disabled = "true" })
+            <span class="form-control-feedback"></span>
+        </div>
+    </div>
+    <div class="form-group modal-footer">
+        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-check"></span>  Yes</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle"></span>  No</button>
+    </div>
+}
+

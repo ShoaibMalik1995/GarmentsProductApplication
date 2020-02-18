@@ -1,0 +1,94 @@
+﻿@using EVS.Dotnet328.GarmentsShop.Models
+
+@model  IEnumerable<DepartmentModel>
+
+@{
+    ViewBag.Title = "Manage";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+    AlertModel alertMessage = TempData["AlertMessage"] as AlertModel;
+}
+
+@if (alertMessage != null)
+{
+    @Html.Partial("~/Views/Shared/_AlertView.cshtml", alertMessage)
+}
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal-label">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModal-label"></h4>
+            </div>
+            <div class="modal-body" id="modalbody">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table table-hover table-bordered table-responsive">
+    <thead>
+        <tr class="bg-primary">
+            <th colspan="5">Manage Department [<a id="addnewlink" data-action="create" data-id="0" style="color:#fff"> Add New </a> ]</th>
+        </tr>
+        <tr class="bg-primary">
+            <th class="col-lg-6">Name</th>
+            <th class="col-lg-6">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var m in Model)
+        {
+        <tr>
+            <td class="col-lg-6">@m.Name</td>
+            <td class="col-lg-6">
+                <button class="btn btn-xs btn-warning dgbtn-edit" data-action="Edit" data-id="@m.Id"> <span class="glyphicon glyphicon-edit"></span></button>
+                <button class="btn btn-xs btn-danger dgbtn-delete" data-action="Delete" data-id="@m.Id"> <span class="glyphicon glyphicon-trash"></span></button>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+
+@section myScript{
+    <script type="text/javascript">
+        $(function () {
+            
+            $(".alert").fadeTo(15000, 1).fadeOut(1000);
+
+            $("#addnewlink,.dgbtn-edit,.dgbtn-delete").click(function () {
+                event.preventDefault;
+                var id = $(this).data("id");
+                var act = $(this).data("action");
+                var url, title;
+                switch (act) {
+                    case "Edit":
+                        title = "Update Department";
+                        url = "/department/edit/" + id;
+                        break;
+                    case "Delete":
+                        title = "Delete Department";
+                        url = "/department/delete/" + id;
+                        break;
+                    default:
+                        title = "Add New Department";
+                        url = "/department/create/";
+                }
+
+                $.ajax(
+                    {
+                        url: url
+                    }
+                ).done(function (response) {
+                    debugger;
+                    console.log(response);
+                    $("#myModal-label").text(title);
+                    $("#modalbody").html(response);
+                    $("#myModal").modal();
+                });
+            });
+        });
+    </script>
+    }

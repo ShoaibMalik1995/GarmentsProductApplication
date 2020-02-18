@@ -1,0 +1,163 @@
+﻿@using EVS.Dotnet328.GarmentsShop.Models
+
+@model IEnumerable<ProvinceModal>
+
+@{
+    ViewBag.Title = "Manage";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+    AlertModel alertMessage = TempData["AlertMessage"] as AlertModel;
+}
+
+@if (alertMessage != null)
+{
+    @Html.Partial("~/Views/Shared/_AlertView.cshtml", alertMessage)
+}
+
+<div class="modal fade" id="mydialog" tabindex="-1" role="dialog" aria-labelledby="mydialog-label">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="mydialog-title"></h4>
+            </div>
+            <div class="modal-body" id="mydialog-body">
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table table-bordered table-hover table-responsive">
+    <thead>
+        <tr class="bg-primary">
+            <th colspan="12">Manage Province [<a id="addnewlink" href="/Province/create" data-action="create" style="color:#fff;">  Add New  </a>]</th>
+        </tr>
+        <tr class="bg-primary">
+            <th colspan="12">@Html.DropDownList("Country", (IEnumerable<SelectListItem>)ViewBag.Country, "- Select Country -", new { @class = "form-control" })</th>
+        </tr>
+        <tr class="bg-primary">
+            <th class="col-lg-7">Name</th>
+            <th class="col-lg-5">Actions</th>
+        </tr>
+    </thead>
+    <tbody id="tablebody">
+        @foreach (var m in Model)
+        {
+            <tr>
+                <td class="col-lg-7">@m.Name </td>
+                <td class="col-lg-5">
+                    <button class="btn btn-xs btn-warning dgbtn-edit" data-action="edit" data-prodid="@m.Id"> <span class="glyphicon glyphicon-edit"></span></button>
+                    <button class="btn btn-xs btn-danger dgbtn-delete" data-action="delete" data-prodid="@m.Id"> <span class="glyphicon glyphicon-trash"></span></button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@section myscript{
+    <script type="text/javascript">
+        $(function () {
+
+            $(".alert").fadeTo(15000, 1).fadeOut(1000);
+
+            $("#addnewlink,.dgbtn-edit,.dgbtn-delete").click(function (event) {
+                //debugger;
+                event.preventDefault();
+
+                var act = $(this).data("action");
+                var url = "/Province/Create";
+                var title = "Add New Province";
+
+                if (act == "edit") {
+                    var pid = $(this).data("prodid");
+                    url = "/Province/Edit/" + pid;
+                    title = "Update Province";
+                }
+                else {
+                    if (act == "delete") {
+                        var pid = $(this).data("prodid");
+                        url = "/Province/Delete/" + pid;
+                        title = "Delete Province";
+                    }
+                }
+
+                $.ajax(
+                    {
+                        url: url
+                    }
+                ).done(function (result) {
+                    $("#mydialog-title").text(title);
+                    $("#mydialog-body").html(result);
+                    $("#mydialog").modal();
+
+                });
+            });
+
+            //On Country Dropdown Change
+            $("#Country").change(function () {
+
+                var cid = $(this).select("option:selected").val();
+                var detail = "";
+
+                var detail = "";
+
+                $.ajax(
+                    {
+                        url: "/Province/GetProvinceByCountry/" + cid
+                    }
+                ).done(function (response) {
+
+                    $("#tablebody").html(detail);
+
+                    $.each(response, function (i, response) {
+
+                        detail += '<tr><td class="col-lg-7">' + response.Name + ' </td>';
+                        detail += '<td class="col-lg-5">';
+                        detail += '<button class="btn btn-xs btn-warning dgbtn-edit" data-action="edit" data-prodid="' + response.Id + '"> <span class="glyphicon glyphicon-edit"></span></button>';
+                        detail += '&nbsp;<button class="btn btn-xs btn-danger dgbtn-delete" data-action="delete" data-prodid="' + response.Id + '"> <span class="glyphicon glyphicon-trash"></span></button>';
+                        detail += '</td></tr>';
+                    });
+
+                    $("#tablebody").html(detail);
+
+                    //Button Click Update And Delete
+                    $(".dgbtn-edit,.dgbtn-delete").click(function (event) {
+                        //debugger;
+                        event.preventDefault();
+
+                        var act = $(this).data("action");
+                        var url = "/Province/Create";
+                        var title = "Add New Province";
+                        if (act == "edit") {
+                            var pid = $(this).data("prodid");
+                            url = "/Province/Edit/" + pid;
+                            title = "Update Province";
+                        }
+                        else {
+                            if (act == "delete") {
+                                var pid = $(this).data("prodid");
+                                url = "/Province/Delete/" + pid;
+                                title = "Delete Province";
+                            }
+                        }
+                        $.ajax(
+                            {
+                                url: url
+                            }
+                        ).done(function (result) {
+                            $("#mydialog-title").text(title);
+                            $("#mydialog-body").html(result);
+                            $("#mydialog").modal();
+
+                        });
+                    });
+
+
+                });
+
+            });
+
+        });
+    </script>
+}
+

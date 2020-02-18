@@ -1,0 +1,18 @@
+﻿@using EVS.Dotnet328.GarmentsShop.Models
+@model DepartmentModel
+
+@using (Html.BeginForm("create", "department", FormMethod.Post, new { id = "createdepartmentform" }))
+{
+    <div class="form-group">
+        <div class="input-group has-feedback">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-bookmark"></span></span>
+            @Html.TextBoxFor(m => m.Name, new { placeholder = "Name", @class = "form-control" })
+            <span class="form-control-feedback"></span>
+        </div>
+    </div>
+
+    <div class="form-group modal-footer">
+        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk"></span>  Save</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle"></span> Cancle</button>
+    </div>
+}

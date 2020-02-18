@@ -1,0 +1,225 @@
+﻿
+@{
+    ViewBag.Title = "Manage";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<div class="container-fluid bg-success">
+    <h2>Product Specification</h2>
+</div>
+<hr />
+<div class="container container-fluid" style="margin-top:1%;">
+    <div class="col-xs-offset-0 col-sm-3 col-md-3">
+        <div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="bg-info">
+                        <th colspan="12">
+                            Product Sizes
+                        </th>
+                    </tr>
+                    <tr>
+                        <th colspan="12">
+                            <input name="PSize" type="text" placeholder="Size (xs,SM)" style="width: 100px" />
+                            <input name="PSizeNo" type="number" min="0" max="100" placeholder="Size No" style="width: 70px" />
+                            <button id="addPSize" class="btn btn-xs btn-success dgbtn-details" data-prodid="0" data-action="Add_PS"> <span class="glyphicon glyphicon-plus"></span></button>
+                        </th>
+                    </tr>
+                    <tr class="bg-primary">
+                        <th colspan="3">Code</th>
+                        <th colspan="6">Name</th>
+                        <th colspan="3">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="tableSize">
+                    @foreach (var c in ViewBag.Sizes)
+                    {
+                    <tr>
+                        <td colspan="3">@c.Number</td>
+                        <td colspan="6">@c.Name</td>
+                        <td colspan="3">
+                            <button class="btn btn-xs btn-success dgbtn-update_S" data-prodid="@c.Id" data-action="update_PS"> <span class="glyphicon glyphicon-floppy-saved"></span></button>
+                            <button class="btn btn-xs btn-danger dgbtn-cancle_S" data-prodid="@c.Id" data-action="cancle_PS"> <span class="glyphicon glyphicon-remove"></span></button>
+
+                            <button class="btn btn-xs btn-warning dgbtn-edit" data-prodid="@c.Id" data-action="Edit_PS"> <span class="glyphicon glyphicon-edit"></span></button>
+                            <button class="btn btn-xs btn-danger dgbtn-delete" data-prodid="@c.Id" data-action="Delete_PS"> <span class="glyphicon glyphicon-trash"></span></button>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-xs-offset-0 col-sm-3 col-md-3 ">
+        <div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="bg-info">
+                        <th colspan="12">
+                            Product Fabrics
+                        </th>
+                    </tr>
+                    <tr>
+                        <th colspan="12">
+                            <input name="PFabric" type="text" placeholder="Product Fabric" />
+                            <button id="addPFabric" class="btn btn-xs btn-success" data-prodid="0" data-action="Add_PF"> <span class="glyphicon glyphicon-plus"></span></button>
+                        </th>
+                    </tr>
+                    <tr class="bg-primary">
+                        <th colspan="9">Name</th>
+                        <th colspan="3">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var c in ViewBag.Fabrics)
+                    {
+                        <tr>
+                            <td colspan="9">@c.Name</td>
+                            <td colspan="3">
+                                <button class="btn btn-xs btn-warning dgbtn-edit" data-prodid="@c.Id" data-action="Edit_PF"> <span class="glyphicon glyphicon-edit"></span></button>
+                                <button class="btn btn-xs btn-danger dgbtn-delete" data-prodid="@c.Id" data-action="Delete_PF"> <span class="glyphicon glyphicon-trash"></span></button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-xs-offset-0 col-sm-5 col-md-5 ">
+        <div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="bg-info">
+                        <th colspan="12">
+                            Product Colors
+                        </th>
+                    </tr>
+                    <tr>
+                        <th colspan="12">
+                            <input name="PColors" type="text" placeholder="Product Color" />
+                            <button class="btn btn-xs btn-success dgbtn-details" data-prodid="0" data-action="Add_PC"> <span class="glyphicon glyphicon-plus"></span></button>
+                        </th>
+                    </tr>
+                    <tr class="bg-primary">
+                        <th colspan="10">Name</th>
+                        <th colspan="2">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var c in ViewBag.Colors)
+                    {
+                        <tr>
+                            <td colspan="10">@c.Name</td>
+                            <td colspan="2">
+                                <button class="btn btn-xs btn-warning dgbtn-edit" data-prodid="@c.Id" data-action="Edit_PC"> <span class="glyphicon glyphicon-edit"></span></button>
+                                <button class="btn btn-xs btn-danger dgbtn-delete" data-prodid="@c.Id" data-action="Delete_PC"> <span class="glyphicon glyphicon-trash"></span></button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+@section myScript{
+<script type="text/javascript">
+        $(function () {
+
+            $(document).find(".dgbtn-update_S").hide();
+            $(document).find(".dgbtn-cancle_S").hide();
+
+            $(".dgbtn-edit,.dgbtn-cancle_S").click(function () {
+                do_Edit(this);
+            });
+
+            function do_Edit($obj) {
+
+                if ($($obj).data('action') == "cancle_PS") {
+
+                    $($obj).closest('tr').find('.dgbtn-update_S, .dgbtn-cancle_S').hide();
+
+                    $($obj).closest('tr').find('.dgbtn-edit, .dgbtn-delete').show();
+                    $($obj).parent().siblings().attr("contenteditable", "false");
+                    $($obj).parent().siblings().removeClass("bg-warning");
+                }
+                else {
+
+                    $($obj).next().hide();
+                    $($obj).hide();
+
+                    $($obj).closest('tr').find('.dgbtn-update_S, .dgbtn-cancle_S').show();
+                    $($obj).parent().siblings().attr("contenteditable", "true");
+                    $($obj).parent().siblings().addClass("bg-warning");
+
+
+                }
+            }
+
+
+            $("#addPSize").click(function () {
+                event.preventDefault;
+
+                var detail = "";
+                var obj = {};
+                obj.name = $("input[name=PSize]").val();
+                obj.number = $("input[name=PSizeNo]").val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "/productfeatures/AddSize",
+                    data: JSON.stringify(obj),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (resp) {
+                        $("input[name=PSize]").val("");
+                        $("input[name=PSizeNo]").val("");
+                        $("#tableSize").html(detail);
+                        $.each(resp, function (i, resp) {
+                            detail += '<tr><td colspan="3">' + resp.Number + '</td><td colspan="6">' + resp.Name + '</td>';
+                            detail += '<td colspan="3">';
+                            detail += '<button class="btn btn-xs btn-success dgbtn-update_S" data-prodid='+resp.Id +'data-action="update_PS"> <span class="glyphicon glyphicon-floppy-saved"></span></button>';
+                            detail += '&nbsp;<button class="btn btn-xs btn-danger dgbtn-cancle_S" data-prodid='+ resp.Id +'data-action="cancle_PS"> <span class="glyphicon glyphicon-remove"></span></button>';
+                            detail += '<button class="btn btn-xs btn-warning dgbtn-edit" data- prodid=' + resp.Id + ' data- action="Edit_PS" > <span class="glyphicon glyphicon-edit"></span></button >';
+                            detail += '&nbsp;<button class="btn btn-xs btn-danger dgbtn-delete" data-prodid=' + resp.Id + ' data-action="Delete_PS"> <span class="glyphicon glyphicon-trash"></span></button>';
+                            detail += '</td></tr>';
+
+                        });
+
+                        $("#tableSize").html(detail);
+
+                        $(document).find(".dgbtn-update_S").hide();
+                        $(document).find(".dgbtn-cancle_S").hide();
+
+                        $(".dgbtn-edit,.dgbtn-cancle_S").click(function () {
+                            do_Edit(this);
+                        });
+
+                    }
+                }).fail(function () {
+                    alert("Failed To Add Product Size");
+                });
+
+            });
+
+            $("#addPFabric").click(function () {
+                event.preventDefault;
+
+                var obj = {};
+                obj.name = $("input[id=PFabric]").val();
+                var detail = "";
+
+                $.ajax({
+                    type: "POST",
+                    url: "/productfeatures/AddFabric",
+                    data: JSON.stringify(obj),
+
+                });
+
+            });
+
+        });
+</script>
+}

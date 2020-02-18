@@ -1,0 +1,65 @@
+﻿@using EVS.Dotnet328.GarmentsShop.Models
+@using EVS.Dotnet328.GarmentsShop.Models.Users
+@model LoginModel
+
+@{
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    ViewBag.Title = "Login";
+    AlertModel alertMessage = TempData["AlertMessage"] as AlertModel;
+    int counter = Convert.ToInt32(ViewBag.LoginAttempts);
+}
+
+@if (alertMessage != null)
+{
+    @Html.Partial("~/Views/Shared/_AlertView.cshtml", alertMessage)
+}
+
+@using (Html.BeginForm("login", "users", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { id = "loginform" }))
+{
+    <div class="form-group">
+        <div class="input-group has-feedback">
+            <span class="input-group-addon label-info" style="background-color:aliceblue"><span class="glyphicon glyphicon-user"></span></span>
+            @Html.TextBoxFor(m => m.LoginId, new { placeholder = "Login Id", @class = "form-control" })
+            <span class="form-control-feedback"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="input-group has-feedback">
+            <span class="input-group-addon label-info" style="background-color:aliceblue"><span class="glyphicon glyphicon-lock"></span></span>
+            @Html.PasswordFor(m => m.Password, new { placeholder = "Password", @class = "form-control" })
+            <span class="form-control-feedback"></span>
+        </div>
+    </div>
+    <div class="form-group" style="text-align:center">
+        <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-log-in"></span>  Login</button>
+
+    </div>
+
+    <div class="form-group" style="text-align:center">
+        <div class="checkbox">
+            <label>
+                @Html.CheckBoxFor(m => m.RememberMe) Remember me
+            </label>
+        </div>
+    </div>
+
+    @Html.Hidden("LoginAttempts", counter)
+}
+
+@section modalfooter{
+    <div>
+        <small class="pull-right">
+            <a href="/users/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a> |  <a href="/users/RecoverPassword"><span class="glyphicon glyphicon-question-sign"></span> Forget Password</a>
+        </small>
+        <div class="clearfix"></div>
+    </div>
+}
+
+@section myScript{
+    <script type="text/javascript">
+        $(function () {
+            $(".alert").fadeTo(5000, 1).fadeOut(1000);
+        });
+    </script>
+}

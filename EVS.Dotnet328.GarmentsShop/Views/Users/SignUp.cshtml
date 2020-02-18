@@ -1,0 +1,115 @@
+﻿@using EVS.Dotnet328.GarmentsShop.Models
+
+@{
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    ViewBag.Title = "SignUp";
+    AlertModel alertMessage = TempData["AlertMessage"] as AlertModel;
+}
+
+@if (alertMessage != null)
+{
+    @Html.Partial("~/Views/Shared/_AlertView.cshtml", alertMessage)
+}
+
+@using (Html.BeginForm("SignUp", "Users", FormMethod.Post, new { id = "signupform" }))
+{
+    <div class="form-group">
+        <div class="input-group has-feedback">
+            <span class="input-group-addon label-info" style="background-color:aliceblue"><span class="glyphicon glyphicon-user"></span></span>
+            @Html.TextBox("FirstName", null, new { placeholder = "First Name", @class = "form-control" })
+            <span class="form-control-feedback"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="input-group has-feedback">
+            <span class="input-group-addon label-info" style="background-color:aliceblue"><span class="glyphicon glyphicon-user"></span></span>
+            @Html.TextBox("LastName", null, new { placeholder = "Last Name", @class = "form-control" })
+            <span class="form-control-feedback"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="input-group has-feedback">
+            <span class="input-group-addon label-info" style="background-color:aliceblue"><span class="glyphicon glyphicon-calendar"></span></span>
+            @Html.TextBox("DOB", null, new { type = "date", @class = "form-control" })
+            <span class="form-control-feedback"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="input-group has-feedback">
+            <span class="input-group-addon label-info" style="background-color:aliceblue"><span class="glyphicon glyphicon-phone"></span></span>
+            @Html.TextBox("MobileNo", null, new { placeholder = "03001234567", min = "0", maxlength = "11", @class = "form-control" })
+            <span class="form-control-feedback"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="input-group has-feedback">
+            <span class="input-group-addon label-info" style="background-color:aliceblue"><span class="glyphicon glyphicon-envelope"></span></span>
+            @Html.TextBox("Email", null, new { placeholder = "abc@gmail.com", @class = "form-control" })
+            <span class="form-control-feedback"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="input-group has-feedback">
+            <div class="input-group">
+                <span class="input-group-addon label-info" style="background-color:aliceblue"><span class="glyphicon glyphicon-tags"></span></span>
+                @Html.DropDownList("Country", (IEnumerable<SelectListItem>)ViewBag.Countries, "- Select Country -", new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="input-group has-feedback">
+            <div class="input-group" id="provinces">
+
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="input-group has-feedback">
+            <div class="input-group" id="Citys">
+
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="input-group has-feedback">
+            <span class="input-group-addon label-info" style="background-color:aliceblue"><span class="glyphicon glyphicon-bookmark"></span></span>
+            @Html.TextBox("Address", null, new { placeholder = "House No-123, Street No-21", @class = "form-control" })
+            <span class="form-control-feedback"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="input-group has-feedback">
+            <span class="input-group-addon label-info" style="background-color:aliceblue"><span class="glyphicon glyphicon-lock"></span></span>
+            @Html.TextBox("Password", null, new { placeholder = "Password", type = "Password", @class = "form-control" })
+            <span class="form-control-feedback"></span>
+        </div>
+    </div>
+
+    <div class="form-group" style="text-align:center">
+        <button type="submit" class="btn btn-info btn-group-lg"><span class="glyphicon glyphicon-floppy-saved"></span> Save</button>
+    </div>
+
+}
+
+@section modalfooter{
+    <div>
+        <small class="pull-right">
+            <a href="/users/login"><span class="glyphicon glyphicon-log-in"></span> Login</a> | <a href="/users/RecoverPassword"><span class="glyphicon glyphicon-question-sign"></span> Forget Password</a>
+        </small>
+        <div class="clearfix"></div>
+    </div>
+}
+
+@section myScript{
+    <script type="text/javascript">
+        $(function () {
+            $(".alert").fadeTo(5000, 1).fadeOut(1000);
+        });
+    </script>
+}

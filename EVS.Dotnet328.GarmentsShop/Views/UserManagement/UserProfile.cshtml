@@ -1,0 +1,101 @@
+﻿@using EVS.Dotnet328.UsersMgt;
+@using EVS.Dotnet328.GarmentsShop.Models
+
+@{
+    ViewBag.Title = "Manage";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+    AlertModel alertMessage = TempData["AlertMessage"] as AlertModel;
+    User CurrentUser = Session[WebUtil.CURRENT_USER] as User;
+
+    string[] name = CurrentUser.Name.Split(' ');
+}
+
+@if (alertMessage != null)
+{
+    @Html.Partial("~/Views/Shared/_AlertView.cshtml", alertMessage)
+}
+
+@using (Html.BeginForm("UserProfile", "UserManagement", FormMethod.Post, new { id = "edituserprofile" }))
+{
+    <div class="row form-group">
+        <div class="col-xs-12 col-sm-6 col-md-7 col-lg-9 bg-success">
+            <h1>@CurrentUser.Name</h1>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-5 col-lg-3">
+            <a href="#"><img title="Profile Image" class="img-circle" src="~/Images/banners/dumy.png"></a>
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-sm-6 col-md-3">
+            <div class="panel panel-success">
+                <div class="panel-heading" style="text-align:center">Profile</div>
+                <div class="panel-body">
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Name </strong></span> @CurrentUser.Name</li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Mobile No</strong></span> @CurrentUser.ContactNumber</li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>User Id</strong></span> @CurrentUser.LoginId</li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Country </strong></span> @CurrentUser.Address.City.Province.Country.Name</li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Province</strong></span> @CurrentUser.Address.City.Province.Name</li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>City</strong></span> @CurrentUser.Address.City.Name</li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>DOB </strong></span> @CurrentUser.BirthDate</li>
+                </div>
+            </div>
+
+        </div>
+        <!--/col-3-->
+        <div class="col-sm-6 col-md-9">
+            <table class="table table-condensed">
+                <tbody>
+                    <tr>
+                        <td>
+                            <h5><strong>First Name</strong></h5>
+                            @Html.TextBox("FirstName", name[0], new { Placeholder = "Shoaib", type = "text", @class = "form-control" })
+                        </td>
+                        <td>
+                            <h5><strong>Last Name</strong></h5>
+                            @Html.TextBox("LastName", name[1], new { Placeholder = "Malik", type = "text", @class = "form-control" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5><strong>Email</strong></h5>
+                            @Html.TextBox("Email", @CurrentUser.Email, new { Placeholder = "abc@gmail.com", type = "text", @class = "form-control" })
+                        </td>
+                        <td>
+                            <h5><strong>Mobile No</strong></h5>
+                            @Html.TextBox("MobileNo", @CurrentUser.ContactNumber, new { Placeholder = "03001234567", min = "0", maxlength = "11", @class = "form-control" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5><strong>Country</strong></h5>
+                            @Html.DropDownList(Convert.ToString(CurrentUser.Address.City.Province.CountryId), (IEnumerable<SelectListItem>)ViewBag.Country,"- Select Country -",new { @class ="form-control"})
+                        </td>
+                        <td>
+                            <h5><strong>Province</strong></h5>
+                            @Html.TextBox("Province", null, new { Placeholder = "- Select Province -", @class = "form-control" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5><strong>City</strong></h5>
+                            @Html.TextBox("City", null, new { Placeholder = "- Select City -", @class = "form-control" })
+                        </td>
+                        <td>
+                            <h5><strong>Address</strong></h5>
+                            @Html.TextBox("Address", CurrentUser.Address.StreetAddress, new { Placeholder = "House #, Street #", @class = "form-control" })
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="modal-footer" style="text-align:center">
+                <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+                <button class="btn btn-info btn-lg" type="reset"><i class="glyphicon glyphicon-refresh"></i> Reset</button>
+            </div>
+        </div>
+
+    </div>
+
+}
+
+

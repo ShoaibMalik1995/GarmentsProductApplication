@@ -1,0 +1,102 @@
+﻿@using EVS.Dotnet328.GarmentsShop.Models
+@model IEnumerable<CountryModel>
+
+@{
+    ViewBag.Title = "Manage";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+    AlertModel alertMessage = TempData["AlertMessage"] as AlertModel;
+}
+
+@if (alertMessage != null)
+{
+    @Html.Partial("~/Views/Shared/_AlertView.cshtml", alertMessage)
+}
+
+<div class="modal fade" id="mydialog" tabindex="-1" role="dialog" aria-labelledby="mydialog-label">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="mydialog-title"></h4>
+            </div>
+            <div class="modal-body" id="mydialog-body">
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table table-bordered table-hover table-responsive">
+    <thead>
+        <tr class="bg-primary">
+            <th colspan="3">Manage Countries [<a id="addnewlink" href="/countries/create" data-action="create" style="color:#fff;">  Add New  </a>]</th>
+        </tr>
+        <tr class="bg-primary">
+            <th class="col-lg-6">Name</th>
+            <th class="col-lg-1">Code</th>
+            <th class="col-lg-5">Actions</th>
+        </tr>
+    </thead>
+    <tbody id="tablebody">
+        @foreach (var m in Model)
+        {
+            <tr>
+                <td class="col-lg-6">@m.Name</td>
+
+                <td class="col-lg-1">
+                    @if (m.Code == null)
+                    {
+                        <span>&nbsp;</span>
+                    }
+                    else
+                    {
+                        <span>@m.Code</span>
+                    }
+                </td>
+                <td class="col-lg-5">
+                    <button class="btn btn-xs btn-warning dgbtn-edit" data-action="edit" data-prodid="@m.Id"> <span class="glyphicon glyphicon-edit"></span></button>
+                    <button class="btn btn-xs btn-danger dgbtn-delete" data-action="delete" data-prodid="@m.Id"> <span class="glyphicon glyphicon-trash"></span></button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+@section myscript{
+
+    <script type="text/javascript">
+        $(function () {
+            
+            $(".alert").fadeTo(15000, 1).fadeOut(1000);
+
+            $("#addnewlink,.dgbtn-edit,.dgbtn-delete").click(function (event) {
+                event.preventDefault();
+                var act = $(this).data("action");
+                var url = "/countries/create";
+                var title = "Add New Country";
+                if (act == "edit") {
+                    var pid = $(this).data("prodid");
+                    url = "/countries/update/" + pid;
+                    title = "Update Country";
+                }
+                else {
+                    if (act == "delete") {
+                        var pid = $(this).data("prodid");
+                        url = "/countries/delete/" + pid;
+                        title = "Delete Country";
+                    }
+                }
+                $.ajax(
+                    {
+                        url: url
+                    }
+                ).done(function (result) {
+                    $("#mydialog-title").text(title);
+                    $("#mydialog-body").html(result);
+                    $("#mydialog").modal();
+                });
+            });           
+        });
+    </script>
+}
